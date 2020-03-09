@@ -10,12 +10,17 @@ import Foundation
 
 protocol ViewModelDelegate: class {
     func show()
+    func showError()
+    func routerRegisterCreditCard(contact: Contact)
+    func routerPayment(_ contact: Contact, _ creditCard: CreditCard)
 }
 
 class ContactsViewModel {
     private var contactsList: [Contact] = []
     private let service: ContactService?
     weak var delegate: ViewModelDelegate?
+    private var creditCard: CreditCard?
+    private var selectedContact: Contact?
     
     var count: Int {
         return contactsList.count
@@ -78,8 +83,22 @@ class ContactsViewModel {
             print(listFilter.isEmpty)
 //            filterContacts = [.error(.empty(.contact))]
         } else {
-            print("listFilter", listFilter)
             filterContacts = listFilter
+        }
+    }
+    
+    func handleTapOnContact(contact: Contact) {
+        if let cardPase = UserDefaults.standard.object(forKey: "CREDIT_CARD") as? Data {
+            let decoder = JSONDecoder()
+            if let card = try? decoder.decode(CreditCard.self, from: cardPase) {
+                self.creditCard = card
+            }
+        }
+        
+        if let card = creditCard {
+        self.delegate?.routerPayment(contact, card)
+        } else {
+            self.delegate?.routerRegisterCreditCard(contact: contact)
         }
     }
 }

@@ -16,6 +16,12 @@ class CreditCardVC: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = " "
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     init(contact: Contact?) {
         self.contact = contact
         super.init(nibName: nil, bundle: nil)

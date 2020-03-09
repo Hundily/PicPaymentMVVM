@@ -27,7 +27,8 @@ class ContactsVC: UIViewController {
 
         setupTableView()
         setupNavigation()
-        viewModel.fetchContacts()
+        setupSearchBar()
+        viewModel.fetchContacts() 
     }
     
     private func setupTableView() {
@@ -39,8 +40,14 @@ class ContactsVC: UIViewController {
     
     private func setupNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Contacts"
+        self.navigationItem.title = L10n.contacts
         navigationItem.searchController = searchController
+    }
+    
+    private func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
     }
 }
 
@@ -60,8 +67,8 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = viewModel.getContactsAt(indexPath.row)
-        let navController = UINavigationController(rootViewController: CreditCardVC(contact: contact))
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        
+        viewModel.handleTapOnContact(contact: contact)
     }
 }
 
@@ -91,9 +98,22 @@ extension ContactsVC: UISearchBarDelegate {
 }
 
 extension ContactsVC: ViewModelDelegate {
+
+    func routerPayment(_ contact: Contact, _ creditCard: CreditCard) {
+        let vc = PaymentVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func routerRegisterCreditCard(contact: Contact) {
+        let navController = UINavigationController(rootViewController: CreditCardVC(contact: contact))
+        self.navigationController?.present(navController, animated: true, completion: nil)
+    }
+    
+    func showError() {
+        
+    }
     
     func show() {
         self.tableView.reloadData()
     }
-
 }
