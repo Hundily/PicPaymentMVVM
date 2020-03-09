@@ -1,0 +1,23 @@
+"teste" = "teste";
+"contacts" = "Contatos";
+"placeHolderSearch" = "Who do you want to pay to?";
+"titleCreditCard" = "Cadastre um cartão de crédito";
+"paymentReceipt" = "Recibo";
+"totalPaid" = "Total pago";
+"descriptionCreditCard" = "Para fazer pagamentos para outras pessoas você precisa cadastrar um cartão de crédito pessoal.";
+"registerCard" = "Cadastrar cartão";
+"editCard" = "Editar Cartão";
+"saveCreditCard" = "Salvar";
+"payment" = "Pagar";
+"invalidNumber" = "Número inválido";
+"invalidCvv" = "CVV inválido";
+"invalidExpired" = "Validade inválida";
+
+"errorInternetDescription" = "Não foi possível carregar a página no momento";
+"errorFetchPayment" = "Não foi possível realizar o pagamento";
+"errorUnexpectedDescription" = "Não foi possivel carregar a página no momento. Por favor, tente mais tarde.";
+"errorUnexpectedTitle" = "Erro inesperado";
+"errorInternetTitle" = "Sem conexão com internet";
+"errorEmptyStateTitleContact" = "Sem Contatos";
+"errorEmptyStateDescriptionContact" = "Não foi possível encontrar os contatos.";
+"errorEmptyStateDescriptionPaymento" = "Não foi possível realizar o pagamento nesse momento.";
