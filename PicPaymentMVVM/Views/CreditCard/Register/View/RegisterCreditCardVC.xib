@@ -9,10 +9,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterCreditCardVC" customModule="PicPaymentMVVM" customModuleProvider="target">
             <connections>
+                <outlet property="buttonRegister" destination="WBZ-Gd-f8Q" id="PGV-Zd-NMr"/>
                 <outlet property="labelCardCVV" destination="W1I-u9-ke6" id="XMi-d9-8hz"/>
                 <outlet property="labelCardExpired" destination="18f-2L-54I" id="qFi-nR-fU6"/>
                 <outlet property="labelCardName" destination="Lf2-dM-ExQ" id="W2K-Qy-pv9"/>
                 <outlet property="labelCardNumber" destination="28I-pd-jau" id="j2Q-YL-61S"/>
+                <outlet property="labelTitle" destination="ZNu-BN-HmE" id="bPM-tJ-C1e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28I-pd-jau" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="24" y="184" width="327" height="39"/>
+                    <rect key="frame" x="24" y="184" width="327" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <userDefinedRuntimeAttributes>
@@ -55,7 +57,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lf2-dM-ExQ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="24" y="291" width="327" height="39.5"/>
+                    <rect key="frame" x="24" y="286" width="327" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <userDefinedRuntimeAttributes>
@@ -81,7 +83,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="18f-2L-54I" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="24" y="398.5" width="128" height="39"/>
+                    <rect key="frame" x="24" y="388" width="128" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="128" id="JTe-Zv-Dst"/>
                     </constraints>
@@ -110,7 +112,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W1I-u9-ke6" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                    <rect key="frame" x="223" y="398.5" width="128" height="39"/>
+                    <rect key="frame" x="223" y="388" width="128" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="128" id="LDz-Lq-lXc"/>
                     </constraints>

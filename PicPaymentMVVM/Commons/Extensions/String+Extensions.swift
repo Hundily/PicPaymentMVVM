@@ -20,7 +20,7 @@ extension String {
         var number: NSNumber!
         let formatter = NumberFormatter()
         formatter.numberStyle = .currencyAccounting
-        formatter.locale = Locale(identifier: "pt_BR")
+        formatter.locale = Locale(identifier: "en-US")
         formatter.currencySymbol = ""
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2

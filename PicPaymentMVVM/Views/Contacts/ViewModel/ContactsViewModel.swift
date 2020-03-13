@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewModelDelegate: class {
+protocol ContactViewModelDelegate: class {
     func show()
     func showError()
     func routerRegisterCreditCard(contact: Contact)
@@ -18,7 +18,7 @@ protocol ViewModelDelegate: class {
 class ContactsViewModel {
     private var contactsList: [Contact] = []
     private let service: ContactService?
-    weak var delegate: ViewModelDelegate?
+    weak var delegate: ContactViewModelDelegate?
     private var creditCard: CreditCard?
     private var selectedContact: Contact?
     

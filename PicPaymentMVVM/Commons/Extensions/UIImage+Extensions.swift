@@ -13,7 +13,7 @@ extension UIImageView {
     
     public func imageFromURL(urlString: String) {
         
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         activityIndicator.color = UIColor.gray
         activityIndicator.startAnimating()

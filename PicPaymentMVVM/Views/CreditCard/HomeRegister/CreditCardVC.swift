@@ -11,6 +11,7 @@ import UIKit
 class CreditCardVC: UIViewController {
     
     var contact: Contact?
+    var delegate: UpdateCreditCard?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,9 @@ class CreditCardVC: UIViewController {
     
     @IBAction func actionRegisterCreditCard(_ sender: Any) {
         guard let contact = self.contact else { return }
-        let vc = RegisterCreditCardVC()
-//        let vc = RegisterCreditCardFormViewController(contact: contact, state: .edit)
+
+        let vc = RegisterCreditCardVC(.register, nil, contact)
+        vc.delegate = self.delegate
         navigationController?.pushViewController(vc, animated: true)
     }
     

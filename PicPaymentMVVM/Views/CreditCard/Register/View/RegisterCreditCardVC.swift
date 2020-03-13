@@ -9,19 +9,43 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+enum RegisterCreditCardState {
+    case edit
+    case register
+}
+
 class RegisterCreditCardVC: UIViewController {
     
+    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelCardNumber: SkyFloatingLabelTextField!
     @IBOutlet weak var labelCardName: SkyFloatingLabelTextField!
     @IBOutlet weak var labelCardExpired: SkyFloatingLabelTextField!
     @IBOutlet weak var labelCardCVV: SkyFloatingLabelTextField!
+    @IBOutlet weak var buttonRegister: CustomButton!
+    private var stateView = RegisterCreditCardState.register
+    private var creditCard: CreditCard?
+    private var contact: Contact?
+    private var kRegisterCreditCardVC = "RegisterCreditCardVC"
+    var delegate: UpdateCreditCard?
     
     var viewModel = CreditCardViewModel()
-
+    
+    init(_ state: RegisterCreditCardState,_ creditCard: CreditCard?,_ contact: Contact?) {
+        super.init(nibName: kRegisterCreditCardVC, bundle: Bundle.main)
+        self.stateView = state
+        self.creditCard = creditCard
+        self.contact = contact
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationLayout()
         setDelegate()
+        setupUI()
     }
     
     private func setupNavigationLayout() {
@@ -39,6 +63,22 @@ class RegisterCreditCardVC: UIViewController {
         labelCardExpired.delegate = self
         labelCardNumber.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         labelCardExpired.addTarget(self, action: #selector(expirationDateDidChange), for: .editingChanged)
+    }
+    
+    private func setupUI() {
+        buttonRegister.setTitle("Register",for: .normal)
+
+        switch stateView {
+        case .edit:
+            labelTitle.text = "Edit Card"
+            labelCardNumber.text = creditCard?.cardNumber
+            labelCardName.text = creditCard?.cardName
+            labelCardExpired.text = creditCard?.cardExpired
+            labelCardCVV.text = creditCard?.cardCvv
+            buttonRegister.setTitle("Edit",for: .normal)
+        case .register:
+            return
+        }
     }
     
     @objc func didChangeText(textField: UITextField) {
@@ -85,10 +125,22 @@ extension RegisterCreditCardVC: UITextFieldDelegate {
 
 extension RegisterCreditCardVC: CreditCardProtocol {
     func registerCardSuccess() {
-        print("sucesso")
-//        viewModel.fetchCreditCardData()
-        let t = viewModel.getCard()
-        print("getCard", t)
+        let creditCard = viewModel.getCard()
+        
+        switch stateView {
+        case .edit:
+            if let card = creditCard {
+                self.delegate?.updateCreditCard(creditCard: card)
+            }
+            
+            dismiss(animated: true, completion: nil)
+        case .register:
+            dismiss(animated: true) {
+                if let card = creditCard, let contact = self.contact {
+                    self.delegate?.goAhead(card, contact)
+                }
+            }
+        }
     }
     
     func registerCardError() {
