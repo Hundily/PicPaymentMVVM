@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        let splashViewController = ContactsVC()
+        let splashViewController = SplashVC()
         self.window?.rootViewController = UINavigationController(rootViewController: splashViewController)
         
         window?.makeKeyAndVisible()

@@ -66,7 +66,7 @@ class RegisterCreditCardVC: UIViewController {
     }
     
     private func setupUI() {
-        buttonRegister.setTitle("Register",for: .normal)
+        buttonRegister.setTitle("Register", for: .normal)
 
         switch stateView {
         case .edit:
@@ -80,15 +80,15 @@ class RegisterCreditCardVC: UIViewController {
             return
         }
     }
-    
+
     @objc func didChangeText(textField: UITextField) {
         textField.text = String().formatterCreditCard(str: textField.text ?? String.empty)
     }
-    
+
     @objc func expirationDateDidChange() {
         labelCardExpired.text = String().formatterExpirationDate(str: labelCardExpired.text ?? String.empty)
      }
-    
+
     @IBAction func actionRegisterCreditCard(_ sender: Any) {
         let creditCard = CreditCard(cardNumber: labelCardNumber.text ?? String.empty, cardName: labelCardName.text ?? String.empty, cardExpired: labelCardExpired.text ?? String.empty, cardCvv: labelCardCVV.text ?? String.empty)
 
@@ -109,24 +109,23 @@ extension RegisterCreditCardVC: UITextFieldDelegate {
         if textField == labelCardNumber {
             return newLength <= 19
         }
-        
+
         if textField == labelCardCVV {
             return newLength <= 3
         }
-        
+
         if textField == labelCardExpired {
             return newLength <= 5
         }
-        
+
         return true
     }
 }
 
-
 extension RegisterCreditCardVC: CreditCardProtocol {
     func registerCardSuccess() {
         let creditCard = viewModel.getCard()
-        
+
         switch stateView {
         case .edit:
             if let card = creditCard {
@@ -142,7 +141,7 @@ extension RegisterCreditCardVC: CreditCardProtocol {
             }
         }
     }
-    
+
     func registerCardError() {
         print("error")
     }

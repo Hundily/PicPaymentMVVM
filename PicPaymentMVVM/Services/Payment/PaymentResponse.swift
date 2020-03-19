@@ -11,21 +11,26 @@ struct PaymentResponse: Codable {
 }
 
 struct Transaction: Codable {
-    let id: Int?
+    let transactionId: Int?
     let timestamp: Int?
     let value: Double?
-    let destination_user: Destination_user?
+    let destinationUser: DestinationUser?
     let success: Bool?
     let status: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case transactionId = "id"
+        case timestamp
+        case value
+        case destinationUser
+        case success
+        case status
+    }
 }
 
-struct Destination_user: Codable {
+struct DestinationUser: Codable {
     let id: Int?
     let name: String?
     let img: String?
     let username: String?
 }
-
-
-
-

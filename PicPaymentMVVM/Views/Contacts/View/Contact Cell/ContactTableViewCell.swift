@@ -10,14 +10,14 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var labelNickName: UILabel!
     @IBOutlet weak var labelUserName: UILabel!
     
     var data: Contact? {
         didSet {
             if let data = data {
-                img.imageFromURL(urlString: data.img)
+                imageProfile.imageFromURL(urlString: data.img)
                 labelNickName.text = data.name
                 labelUserName.text = data.username
             }
@@ -26,11 +26,10 @@ class ContactTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        img.layer.cornerRadius = img.bounds.size.height / 2
+        imageProfile.layer.cornerRadius = imageProfile.bounds.size.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

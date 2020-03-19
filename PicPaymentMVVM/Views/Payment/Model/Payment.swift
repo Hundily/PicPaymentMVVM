@@ -7,10 +7,9 @@
 //
 
 struct Payment {
-    let card_number: String
+    let cardNumber: String
     let cvv: Int
     let value: Double
-    let expiry_date: String
-    let destination_user_id: Int
+    let expiryDate: String
+    let destinationUserId: Int
 }
-

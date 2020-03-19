@@ -23,11 +23,11 @@ final  class PaymentService: NSObject, PaymentServiceProtocol {
 
     func fetchPayment(payment: Payment, completion: @escaping (PaymentResult) -> Void) {
         let parameters: [String: Any] = [
-            "card_number": payment.card_number,
+            "card_number": payment.cardNumber,
             "cvv": payment.cvv,
             "value": payment.value,
-            "expiry_date": payment.expiry_date,
-            "destination_user_id": payment.destination_user_id
+            "expiry_date": payment.expiryDate,
+            "destination_user_id": payment.destinationUserId
         ]
 
         service.request(urlString: API.Path.payment.value, method: .post, parameters: parameters, encoding: .json) { (result: PaymentResult) in

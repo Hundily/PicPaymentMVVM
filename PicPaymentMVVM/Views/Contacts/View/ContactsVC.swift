@@ -9,11 +9,11 @@
 import UIKit
 
 class ContactsVC: UIViewController {
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     var viewModel = ContactsViewModel()
-    
+
     private lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
@@ -28,28 +28,29 @@ class ContactsVC: UIViewController {
         setupTableView()
         setupNavigation()
         setupSearchBar()
-        viewModel.fetchContacts() 
+        viewModel.fetchContacts()
+        viewModel.checkCreditCard()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.title = L10n.contacts
         navigationController?.navigationBar.tintColor = .black
     }
-    
+
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         viewModel.delegate = self
         tableView.registerNib(ContactTableViewCell.self)
     }
-    
+
     private func setupNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = L10n.contacts
         navigationItem.searchController = searchController
     }
-    
+
     private func setupSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -58,11 +59,11 @@ class ContactsVC: UIViewController {
 }
 
 extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getContactsCount()
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ContactTableViewCell
 
@@ -71,10 +72,10 @@ extension ContactsVC: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = viewModel.getContactsAt(indexPath.row)
-        
+
         viewModel.handleTapOnContact(contact: contact)
     }
 }
@@ -88,16 +89,16 @@ extension ContactsVC: UISearchResultsUpdating {
 }
 
 extension ContactsVC: UISearchBarDelegate {
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setLayout(state: .enabled)
     }
-    
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.setLayout(state: .disabled)
         viewModel.clearFilterContacts()
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setLayout(state: .disabled)
         viewModel.clearFilterContacts()
@@ -107,21 +108,21 @@ extension ContactsVC: UISearchBarDelegate {
 extension ContactsVC: ContactViewModelDelegate {
 
     func routerPayment(_ contact: Contact, _ creditCard: CreditCard) {
-        let vc = PaymentVC(contact, creditCard)
-        navigationController?.pushViewController(vc, animated: true)
+        let paymentVC = PaymentVC(contact, creditCard)
+        navigationController?.pushViewController(paymentVC, animated: true)
     }
-    
+
     func routerRegisterCreditCard(contact: Contact) {
-        let vc = CreditCardVC(contact: contact)
-        vc.delegate = self
-        let navController = UINavigationController(rootViewController: vc)
-        navigationController?.present(navController, animated: true, completion: nil)
+        let creditCardVC = CreditCardVC(contact: contact)
+        creditCardVC.delegate = self
+        let navCreditCardVC = UINavigationController(rootViewController: creditCardVC)
+        navigationController?.present(navCreditCardVC, animated: true, completion: nil)
     }
-    
+
     func showError() {
-        
+
     }
-    
+
     func show() {
         tableView.reloadData()
     }
@@ -131,9 +132,9 @@ extension ContactsVC: UpdateCreditCard {
     func updateCreditCard(creditCard: CreditCard) {
         //
     }
-    
+
     func goAhead(_ creditCard: CreditCard, _ contact: Contact) {
-        let vc = PaymentVC(contact, creditCard)
-        navigationController?.pushViewController(vc, animated: true)
+        let paymentVC = PaymentVC(contact, creditCard)
+        navigationController?.pushViewController(paymentVC, animated: true)
     }
 }

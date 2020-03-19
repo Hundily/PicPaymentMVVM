@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		452409C006F1A85D90AAEFCA /* Pods_PicPaymentMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C623F8C69B2B15BA6650E1A3 /* Pods_PicPaymentMVVM.framework */; };
+		A04DF12B2423BDA500042F54 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DF1292423BDA500042F54 /* SplashVC.swift */; };
+		A04DF12C2423BDA500042F54 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04DF12A2423BDA500042F54 /* SplashVC.xib */; };
 		A059FA4E241A6AE7007E9909 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA4D241A6AE7007E9909 /* PaymentViewModel.swift */; };
 		A059FA50241AA2E7007E9909 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA4F241AA2E7007E9909 /* Payment.swift */; };
 		A059FA52241AA38A007E9909 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA51241AA38A007E9909 /* PaymentResponse.swift */; };
@@ -84,6 +86,8 @@
 /* Begin PBXFileReference section */
 		52561F0364B79E220239C29E /* Pods-PicPaymentMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPaymentMVVM.debug.xcconfig"; path = "Target Support Files/Pods-PicPaymentMVVM/Pods-PicPaymentMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		9D8B1B46BD0159777345231D /* Pods-PicPaymentMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPaymentMVVM.release.xcconfig"; path = "Target Support Files/Pods-PicPaymentMVVM/Pods-PicPaymentMVVM.release.xcconfig"; sourceTree = "<group>"; };
+		A04DF1292423BDA500042F54 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		A04DF12A2423BDA500042F54 /* SplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
 		A059FA4D241A6AE7007E9909 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		A059FA4F241AA2E7007E9909 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		A059FA51241AA38A007E9909 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
@@ -181,9 +185,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A04DF1282423BD8300042F54 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A04DF1292423BDA500042F54 /* SplashVC.swift */,
+				A04DF12A2423BDA500042F54 /* SplashVC.xib */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		A07EC88D2416643100F8C381 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A04DF1282423BD8300042F54 /* Splash */,
 				A07EC89B2416749000F8C381 /* Payment */,
 				A07EC88E2416644200F8C381 /* CreditCard */,
 				A0D74BD023FCA79C00AF0171 /* Contacts */,
@@ -554,6 +568,7 @@
 				A0D74BB223FCA5AA00AF0171 /* Frameworks */,
 				A0D74BB323FCA5AA00AF0171 /* Resources */,
 				B2CF91D23360D89FB708E92C /* [CP] Embed Pods Frameworks */,
+				A04DF12D2423CD5A00042F54 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -621,6 +636,7 @@
 				A0D74C2623FCAA9200AF0171 /* SFUIText-HeavyItalic.ttf in Resources */,
 				A0D74BC023FCA5AA00AF0171 /* Main.storyboard in Resources */,
 				A0D74C2723FCAA9200AF0171 /* SFUIText-RegularItalic.ttf in Resources */,
+				A04DF12C2423BDA500042F54 /* SplashVC.xib in Resources */,
 				A0D74C1B23FCAA9200AF0171 /* Localizable.strings in Resources */,
 				A0D74BCF23FCA79800AF0171 /* ContactsVC.xib in Resources */,
 				A0D74C1823FCAA9200AF0171 /* Assets.xcassets in Resources */,
@@ -652,6 +668,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A04DF12D2423CD5A00042F54 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		B2CF91D23360D89FB708E92C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -696,6 +730,7 @@
 				A0D74C1123FCAA9200AF0171 /* BaseWebservice.swift in Sources */,
 				A0D74C3A23FCAA9200AF0171 /* ToolBarButtonKeyboard.swift in Sources */,
 				A059FA50241AA2E7007E9909 /* Payment.swift in Sources */,
+				A04DF12B2423BDA500042F54 /* SplashVC.swift in Sources */,
 				A059FA4E241A6AE7007E9909 /* PaymentViewModel.swift in Sources */,
 				A07EC8A5241677E900F8C381 /* CreditCard.swift in Sources */,
 				A0D74C0F23FCAA9200AF0171 /* Webservice.swift in Sources */,

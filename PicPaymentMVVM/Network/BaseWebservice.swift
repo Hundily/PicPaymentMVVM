@@ -33,7 +33,7 @@ struct BaseWebservice: Webservice {
         guard let url = URL(string: urlString) else {
             return completion(.failure(.malformedURL))
         }
-        
+
         var alamofireHeaders = headers
         alamofireHeaders["Content-Type"] = "application/json"
         
@@ -63,7 +63,7 @@ struct BaseWebservice: Webservice {
                 }
         }
     }
-    
+
     private func handleFailure<T>(error: Error, statusCode: Int?,
                                   completion: @escaping (Swift.Result<T, WebserviceError>) -> Void) {
         if let urlError = error as? URLError {
@@ -73,7 +73,7 @@ struct BaseWebservice: Webservice {
         guard let statusCode = statusCode else {
             return completion(.failure(.unexpected))
         }
-        
+
         completion(.failure(self.handleHTTPError(statusCode: statusCode)))
     }
     
@@ -92,7 +92,7 @@ struct BaseWebservice: Webservice {
         guard let error = HTTPStatusCode(rawValue: statusCode) else {
             return .unexpected
         }
-        
+
         switch error {
         case .unauthorized:
             return .unauthorized

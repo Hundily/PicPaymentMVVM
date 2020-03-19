@@ -14,38 +14,43 @@ enum SearchBarState {
 }
 
 extension UISearchBar {
-    
+
     func setLayout(state: SearchBarState) {
         searchBarStyle = .minimal
         setShowsCancelButton(true, animated: true)
-        
-        let searchBarTextField = self.value(forKey: "searchField") as! UITextField
-        let glassIconView = searchBarTextField.leftView as? UIImageView
-        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
-        glassIconView?.tintColor = .white
-        
-        searchBarTextField.layer.borderColor = UIColor.white.cgColor
-        searchBarTextField.layer.borderWidth = 1.0
-        searchBarTextField.layer.cornerRadius = 15.0
-        searchBarTextField.leftView = glassIconView
-        
-        
-        switch state {
-        case .enabled:
-            searchBarTextField.layoutSubviews()
-        case .disabled:
-            searchBarStyle = .default
-            backgroundImage = UIImage()
-            let searchBarTextField = self.value(forKey: "searchField") as! UITextField
-            searchBarTextField.layer.borderColor = nil
-            searchBarTextField.layer.borderWidth = 0
-            searchBarTextField.layoutSubviews()
+
+        let searchBarTextField = self.value(forKey: "searchField") as? UITextField
+
+        if let searchBarText = searchBarTextField {
+            let glassIconView = searchBarText.leftView as? UIImageView
+            glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+            glassIconView?.tintColor = .white
+            
+            searchBarText.layer.borderColor = UIColor.white.cgColor
+            searchBarText.layer.borderWidth = 1.0
+            searchBarText.layer.cornerRadius = 15.0
+            searchBarText.leftView = glassIconView
+            
+            switch state {
+            case .enabled:
+                searchBarText.layoutSubviews()
+            case .disabled:
+                searchBarStyle = .default
+                backgroundImage = UIImage()
+                let searchBarTextField = self.value(forKey: "searchField") as? UITextField
+                if let searchBarText = searchBarTextField {
+                    searchBarText.layer.borderColor = nil
+                    searchBarText.layer.borderWidth = 0
+                    searchBarText.layoutSubviews()
+                }
+            }
         }
     }
-    
+
     func applyCornerRadius(value: CGFloat) {
-        let searchBarTextField = self.value(forKey: "searchField") as! UITextField
-        searchBarTextField.layer.cornerRadius = value
+        let searchBarTextField = self.value(forKey: "searchField") as? UITextField
+        if let searchBarText = searchBarTextField {
+            searchBarText.layer.cornerRadius = value
+        }
     }
-    
 }

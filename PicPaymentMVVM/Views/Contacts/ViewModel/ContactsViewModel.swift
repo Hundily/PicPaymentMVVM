@@ -21,21 +21,21 @@ class ContactsViewModel {
     weak var delegate: ContactViewModelDelegate?
     private var creditCard: CreditCard?
     private var selectedContact: Contact?
-    
+
     var count: Int {
         return contactsList.count
     }
-    
+
     private var filterContacts: [Contact] = [] {
         didSet {
             self.delegate?.show()
         }
     }
-    
+
     init() {
         service = ContactService()
     }
-    
+
     func fetchContacts() {
         guard let service = service else { return }
         
@@ -53,7 +53,7 @@ class ContactsViewModel {
             }
         }
     }
-    
+
     func getContactsAt(_ index: Int) -> Contact {
         if filterContacts.count > 0 {
             return filterContacts[index]
@@ -61,19 +61,19 @@ class ContactsViewModel {
 
         return contactsList[index]
     }
-    
+
     func getContactsCount() -> Int {
         if filterContacts.count > 0 {
             return filterContacts.count
         }
-        
+
         return contactsList.count
     }
     
     func clearFilterContacts() {
         self.filterContacts.removeAll()
     }
-    
+
     func filterContacts(by name: String) {
         let listFilter = contactsList.filter { contact in
             return contact.name.uppercased().contains(name.uppercased())
@@ -86,16 +86,18 @@ class ContactsViewModel {
             filterContacts = listFilter
         }
     }
-    
-    func handleTapOnContact(contact: Contact) {
+
+    func checkCreditCard() {
         if let cardPase = UserDefaults.standard.object(forKey: "CREDIT_CARD") as? Data {
             let decoder = JSONDecoder()
             if let card = try? decoder.decode(CreditCard.self, from: cardPase) {
                 self.creditCard = card
             }
         }
-        
-        if let card = creditCard {
+    }
+
+    func handleTapOnContact(contact: Contact) {
+        if let card = self.creditCard {
         self.delegate?.routerPayment(contact, card)
         } else {
             self.delegate?.routerRegisterCreditCard(contact: contact)
