@@ -9,12 +9,12 @@
 import UIKit
 
 struct ManagerError {
-    
+
     func handler(error: WebserviceError, on view: UIView,
                  completion: @escaping () -> Void) {
         let viewError = ErrorView(frame: view.frame, error: error, buttonAction: completion)
         view.addSubview(viewError)
-        
+
         viewError.anchor(top: view.topAnchor,
                          leading: view.leadingAnchor,
                          bottom: view.bottomAnchor,

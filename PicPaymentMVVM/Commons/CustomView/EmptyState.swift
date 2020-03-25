@@ -11,7 +11,7 @@ import UIKit
 enum EmptyState {
     case contact
     case payment
-    
+
     var title: String {
         switch self {
         case .contact:
@@ -20,7 +20,7 @@ enum EmptyState {
             return L10n.errorFetchPayment
         }
     }
-    
+
     var description: String {
         switch self {
         case .contact:
@@ -29,7 +29,7 @@ enum EmptyState {
             return L10n.errorEmptyStateDescriptionPaymento
         }
     }
-    
+
     var imageName: UIImage {
         switch self {
         case .contact:

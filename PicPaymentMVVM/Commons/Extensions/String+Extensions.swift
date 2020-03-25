@@ -28,9 +28,11 @@ extension String {
         var amountWithPrefix = self
 
         // remove from String: "$", ".", ","
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-        
+        let getRegex = try? NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        if let regex = getRegex {
+            amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+        }
+
         let double = (amountWithPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))
 

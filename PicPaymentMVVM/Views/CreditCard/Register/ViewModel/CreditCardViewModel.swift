@@ -30,7 +30,7 @@ class CreditCardViewModel {
             delegate?.registerCardError()
         }
     }
-    
+
     func fetchCreditCardData() {
         if let cardPase = UserDefaults.standard.object(forKey: "CREDIT_CARD") as? Data {
             let decoder = JSONDecoder()
@@ -39,11 +39,11 @@ class CreditCardViewModel {
             }
         }
     }
-    
+
     func setContact(contact: Contact) {
         self.contact = contact
     }
-    
+
     func getCard() -> CreditCard? {
         return self.creditCard
     }

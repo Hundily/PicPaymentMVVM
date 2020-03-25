@@ -20,15 +20,14 @@ class PaymentViewModel {
     weak var delegate: PaymentViewModelDelegate?
     private var creditCard: CreditCard?
     private var selectedContact: Contact?
-    
+
     init() {
         service = PaymentService()
     }
-    
+
     func fetchPayment(payment: Payment) {
         guard let service = service else { return }
-        
-//        var paymentTest = Payment(card_number: "1111111111112222", cvv: 123, value: 1.0, expiry_date: "10/10", destination_user_id: 1)
+
         service.fetchPayment(payment: payment) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -41,4 +40,3 @@ class PaymentViewModel {
         }
     }
 }
-

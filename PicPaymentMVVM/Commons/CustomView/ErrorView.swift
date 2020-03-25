@@ -8,16 +8,16 @@
 import UIKit
 
 final class ErrorView: UIView {
-    
+
     private var buttonAction: (() -> Void)
-    
+
     private lazy var imageEmptyState: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.accessibilityIdentifier = "imageEmptyState"
         return image
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "labelTitleError"
@@ -26,7 +26,7 @@ final class ErrorView: UIView {
         label.font = Font(font: FontFamily.SFUIText.bold, size: 16)
         return label
     }()
-    
+
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "labelDescriptionError"
@@ -36,7 +36,7 @@ final class ErrorView: UIView {
         label.font = Font(font: FontFamily.SFUIText.regular, size: 12)
         return label
     }()
-    
+
     private lazy var buttonTryAgain: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +48,7 @@ final class ErrorView: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         return button
     }()
-    
+
     init(frame: CGRect, error: WebserviceError, buttonAction: @escaping () -> Void) {
         self.buttonAction = buttonAction
         super.init(frame: frame)
@@ -56,16 +56,16 @@ final class ErrorView: UIView {
         setupViews()
         setupView(error: error)
     }
-    
+
     @objc private func actionButton() {
         buttonAction()
         self.removeFromSuperview()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupView(error: WebserviceError) {
         switch error {
         case .notConnectedToInternet:
@@ -96,21 +96,21 @@ extension ErrorView: CodeViewProtocol {
         self.addSubview(descriptionLabel)
         self.addSubview(buttonTryAgain)
     }
-    
+
     func setupConstraints() {
         imageEmptyState.anchor(top: topAnchor, insets: .init(top: 20.5, left: 0, bottom: 0, right: 0))
         imageEmptyState.anchorCenterXToSuperview()
-        
+
         titleLabel.anchor(top: imageEmptyState.bottomAnchor,
                           leading: leadingAnchor,
                           trailing: trailingAnchor,
                           insets: .init(top: 20, left: 20, bottom: 0, right: 20))
-        
+
         descriptionLabel.anchor(top: titleLabel.bottomAnchor,
                                 leading: leadingAnchor,
                                 trailing: trailingAnchor,
                                 insets: .init(top: 15, left: 22, bottom: 0, right: 22))
-        
+
         buttonTryAgain.anchor(top: descriptionLabel.bottomAnchor,
                               leading: leadingAnchor,
                               trailing: trailingAnchor,
@@ -119,6 +119,5 @@ extension ErrorView: CodeViewProtocol {
         bottomConstraint.isActive = true
         buttonTryAgain.anchor(height: 56)
     }
-    
-}
 
+}

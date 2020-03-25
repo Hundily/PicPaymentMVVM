@@ -17,7 +17,7 @@ struct Transaction: Codable {
     let destinationUser: DestinationUser?
     let success: Bool?
     let status: String?
-    
+
     private enum CodingKeys: String, CodingKey {
         case transactionId = "id"
         case timestamp

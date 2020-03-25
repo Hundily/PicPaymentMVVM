@@ -22,7 +22,7 @@ enum WebserviceError: Error {
 }
 
 extension WebserviceError: LocalizedError {
-    
+
     public var errorDescription: String? {
         switch self {
         case .internalServerError:

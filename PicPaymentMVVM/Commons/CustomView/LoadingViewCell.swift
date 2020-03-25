@@ -9,9 +9,9 @@
 import UIKit
 
 final class LoadingViewCell: UITableViewCell {
-    
+
     private let loadingManager = LoadingManager()
-    
+
     func setup() {
         self.selectionStyle = .none
         self.backgroundColor = .clear

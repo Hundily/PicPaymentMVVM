@@ -27,7 +27,7 @@ class PaymentVC: UIViewController {
     private var creditCard: CreditCard?
     private var kPaymentVC = "PaymentVC"
     private var viewModel = PaymentViewModel()
-    
+
     init(_ contact: Contact,_ creditCard: CreditCard) {
         self.contact = contact
         self.creditCard = creditCard

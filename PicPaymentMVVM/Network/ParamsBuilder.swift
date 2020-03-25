@@ -7,7 +7,7 @@
 //
 
 struct ParamsBuilder {
-    
+
     func buildMultipleAttributesDividedByPipe(attrs: [Int]) -> String {
         if attrs.isEmpty { return ""}
         var params = ""

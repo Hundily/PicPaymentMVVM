@@ -19,7 +19,6 @@ extension CodeViewProtocol {
         setupConstraints()
         setupAdditionalConfiguration()
     }
-    
+
     func setupAdditionalConfiguration() { }
 }
-

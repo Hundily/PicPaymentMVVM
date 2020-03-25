@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PaymentServiceProtocol  {
+protocol PaymentServiceProtocol {
     typealias PaymentResult = Result<PaymentResponse, WebserviceError>
     func fetchPayment(payment: Payment, completion: @escaping (PaymentResult) -> Void)
 }

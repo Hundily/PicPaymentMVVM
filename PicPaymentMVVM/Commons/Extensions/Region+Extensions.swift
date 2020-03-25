@@ -14,4 +14,3 @@ extension Region {
                                zone: Zones.americaSaoPaulo,
                                locale: Locales.portugueseBrazil)
 }
-

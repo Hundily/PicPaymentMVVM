@@ -22,28 +22,28 @@ extension ParameterEncoding {
 
 struct BaseWebservice: Webservice {
     private let manager = DefaultSessionManager()
-    
+
     func request<T: Codable>(urlString: String,
                              method: HTTPMethod,
                              parameters: [String: Any],
                              headers: [String: String],
                              encoding: ParameterEncoding,
                              completion: @escaping (Swift.Result<T, WebserviceError>) -> Void) {
-        
+
         guard let url = URL(string: urlString) else {
             return completion(.failure(.malformedURL))
         }
 
         var alamofireHeaders = headers
         alamofireHeaders["Content-Type"] = "application/json"
-        
+
         let httpMethod = alamofireMethod(with: method)
-        
+
         let request = manager.request(url, method: httpMethod,
                                       parameters: parameters,
                                       encoding: encoding.alamofireEncoding,
                                       headers: alamofireHeaders)
-        
+
         request
             .validate(statusCode: 200..<300)
             .responseData { response in
@@ -69,14 +69,14 @@ struct BaseWebservice: Webservice {
         if let urlError = error as? URLError {
             return completion(.failure(self.handleURLError(error: urlError)))
         }
-        
+
         guard let statusCode = statusCode else {
             return completion(.failure(.unexpected))
         }
 
         completion(.failure(self.handleHTTPError(statusCode: statusCode)))
     }
-    
+
     private func handleURLError(error: URLError) -> WebserviceError {
         switch error.code {
         case .notConnectedToInternet:
@@ -87,7 +87,7 @@ struct BaseWebservice: Webservice {
             return .unexpected
         }
     }
-    
+
     private func handleHTTPError(statusCode: Int) -> WebserviceError {
         guard let error = HTTPStatusCode(rawValue: statusCode) else {
             return .unexpected

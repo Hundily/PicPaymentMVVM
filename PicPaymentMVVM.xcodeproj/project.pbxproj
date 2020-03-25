@@ -10,6 +10,8 @@
 		452409C006F1A85D90AAEFCA /* Pods_PicPaymentMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C623F8C69B2B15BA6650E1A3 /* Pods_PicPaymentMVVM.framework */; };
 		A04DF12B2423BDA500042F54 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DF1292423BDA500042F54 /* SplashVC.swift */; };
 		A04DF12C2423BDA500042F54 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04DF12A2423BDA500042F54 /* SplashVC.xib */; };
+		A04DF1312424288400042F54 /* ReceiptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DF12F2424288400042F54 /* ReceiptVC.swift */; };
+		A04DF1322424288400042F54 /* ReceiptVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04DF1302424288400042F54 /* ReceiptVC.xib */; };
 		A059FA4E241A6AE7007E9909 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA4D241A6AE7007E9909 /* PaymentViewModel.swift */; };
 		A059FA50241AA2E7007E9909 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA4F241AA2E7007E9909 /* Payment.swift */; };
 		A059FA52241AA38A007E9909 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A059FA51241AA38A007E9909 /* PaymentResponse.swift */; };
@@ -88,6 +90,8 @@
 		9D8B1B46BD0159777345231D /* Pods-PicPaymentMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicPaymentMVVM.release.xcconfig"; path = "Target Support Files/Pods-PicPaymentMVVM/Pods-PicPaymentMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		A04DF1292423BDA500042F54 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		A04DF12A2423BDA500042F54 /* SplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
+		A04DF12F2424288400042F54 /* ReceiptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptVC.swift; sourceTree = "<group>"; };
+		A04DF1302424288400042F54 /* ReceiptVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiptVC.xib; sourceTree = "<group>"; };
 		A059FA4D241A6AE7007E9909 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		A059FA4F241AA2E7007E9909 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		A059FA51241AA38A007E9909 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
@@ -194,9 +198,19 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		A04DF12E2424286E00042F54 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				A04DF12F2424288400042F54 /* ReceiptVC.swift */,
+				A04DF1302424288400042F54 /* ReceiptVC.xib */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
 		A07EC88D2416643100F8C381 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A04DF12E2424286E00042F54 /* Receipt */,
 				A04DF1282423BD8300042F54 /* Splash */,
 				A07EC89B2416749000F8C381 /* Payment */,
 				A07EC88E2416644200F8C381 /* CreditCard */,
@@ -635,6 +649,7 @@
 				A0D74C1C23FCAA9200AF0171 /* SFUIText-Medium.ttf in Resources */,
 				A0D74C2623FCAA9200AF0171 /* SFUIText-HeavyItalic.ttf in Resources */,
 				A0D74BC023FCA5AA00AF0171 /* Main.storyboard in Resources */,
+				A04DF1322424288400042F54 /* ReceiptVC.xib in Resources */,
 				A0D74C2723FCAA9200AF0171 /* SFUIText-RegularItalic.ttf in Resources */,
 				A04DF12C2423BDA500042F54 /* SplashVC.xib in Resources */,
 				A0D74C1B23FCAA9200AF0171 /* Localizable.strings in Resources */,
@@ -760,6 +775,7 @@
 				A0D74C2B23FCAA9200AF0171 /* LoadingManager.swift in Sources */,
 				A0D74BCE23FCA79800AF0171 /* ContactsVC.swift in Sources */,
 				A0D74C2D23FCAA9200AF0171 /* Region+Extensions.swift in Sources */,
+				A04DF1312424288400042F54 /* ReceiptVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,12 +25,12 @@ extension UISearchBar {
             let glassIconView = searchBarText.leftView as? UIImageView
             glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
             glassIconView?.tintColor = .white
-            
+
             searchBarText.layer.borderColor = UIColor.white.cgColor
             searchBarText.layer.borderWidth = 1.0
             searchBarText.layer.cornerRadius = 15.0
             searchBarText.leftView = glassIconView
-            
+
             switch state {
             case .enabled:
                 searchBarText.layoutSubviews()

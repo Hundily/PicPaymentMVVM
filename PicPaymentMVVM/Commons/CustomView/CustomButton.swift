@@ -16,21 +16,21 @@ enum CustomButtonState {
 }
 
 class CustomButton: UIButton {
-    
+
     var originalButtonText: String?
     fileprivate lazy var activityIndicator: UIActivityIndicatorView = {
       let animation = createActivityIndicator()
       return animation
     }()
-    
+
     init() {
         super.init(frame: .zero)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -38,12 +38,12 @@ class CustomButton: UIButton {
         layoutButton(.enabled)
         centerActivityIndicatorInButton()
     }
-    
+
     func setupUI() {
         self.setTitleColor(.white, for: .normal)
         self.setTitleColor(.darkGray, for: .disabled)
     }
-    
+
     func layoutButton(_ state: CustomButtonState) {
         originalButtonText = self.titleLabel?.text
         self.setTitle(self.titleLabel?.text, for: .normal)
@@ -53,7 +53,7 @@ class CustomButton: UIButton {
         self.backgroundColor = ColorName.green.color
         self.layer.cornerRadius = 25
         self.contentEdgeInsets = UIEdgeInsets(top: 26, left: 16, bottom: 26, right: 16)
-        
+
         switch state {
         case .enabled:
             hideLoading()
@@ -69,7 +69,7 @@ class CustomButton: UIButton {
             self.isEnabled = false
         }
     }
-    
+
     func hideLoading() {
         self.setTitle(originalButtonText, for: .normal)
         activityIndicator.stopAnimating()

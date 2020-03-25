@@ -10,10 +10,10 @@ import UIKit
 import Lottie
 
 final class LoadingManager {
-    
+
     // MARK: View
     private let animationView = AnimationView(name: "loading")
-    
+
     func startAnimation(view: UIView) {
         let screen = UIScreen.main.bounds
         animationView.frame = screen
@@ -23,7 +23,7 @@ final class LoadingManager {
         view.addSubview(animationView)
         animationView.play()
     }
-    
+
     func stopAnimation() {
         animationView.stop()
         animationView.removeFromSuperview()
